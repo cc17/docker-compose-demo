@@ -1,0 +1,27 @@
+nginx: 
+  build: ./nginx
+  links:
+    - node1:node1
+    - node2:node2
+    - node3:node3
+  ports:
+    - "80:80"
+node1:
+  build: ./
+  ports:
+    - "8888"
+  volumes:
+    - .:/src
+node2:
+  build: ./
+  ports:
+    - "8888"
+  volumes:
+    - .:/src
+node3:
+  # build后面的路径是指Dockerfile所在的路径
+  build: ./
+  ports:
+    - "8888"
+  volumes:
+    - .:/src
